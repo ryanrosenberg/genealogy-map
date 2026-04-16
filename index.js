@@ -1,12 +1,9 @@
-
-// sets the access token, associating the map with your Mapbox account and its permissions
 mapboxgl.accessToken = 'pk.eyJ1IjoicmJyMjk2IiwiYSI6ImNtbzBsN294dzA5NjYydHB5NTBhaGtuMTkifQ.QqdFAjf6XYSTRUA0QZLzdw';
 
-// creates the map, setting the container to the id of the div you added in step 2, and setting the initial center and zoom level of the map
 const map = new mapboxgl.Map({
-    container: 'map', // container ID
-    center: [-73.90868457, 40.65896597], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-    zoom: 11, // starting zoom
+    container: 'map', 
+    center: [-73.90868457, 40.65896597],
+    zoom: 11,
     style: 'mapbox://styles/rbr296/cmo0luuhd005b01pcbzvoefsi'
 });
 
@@ -198,18 +195,19 @@ const locations = [
     }
 ];
 
+// prompted Claude to add the popup and to do the hover effect and tweaked from there
 const personColors = {
-    "Burt Rosenberg":    "#E05C2A",
-    "Sarah Schildkraut": "#2A7BE0",
-    "Louis Rosenberg":   "#2AAE6E",
-    "William Rosenberg": "#9B2AE0",
-    "Eva Warshauer":     "#E0B02A"
+    "Burt Rosenberg (grandfather)":    "#cf876d",
+    "Sarah Schildkraut (great-grandmother)": "#72abf1",
+    "Louis Rosenberg (great-grandfather)":   "#64e6a7",
+    "William Rosenberg (great-great-grandfather)": "#9B2AE0",
+    "Eva Warshauer (great-great-grandmother)":     "#8f7c4a"
 };
 
 const markersByPerson = {};
 
 locations.forEach(location => {
-    const color = personColors[location.person] || "#888888";
+    const color = personColors[`${location.person} (${location.relation})`] || "#888888";
 
     // Outer wrapper — Mapbox controls transform on this, don't touch it
     const markerEl = document.createElement('div');
@@ -267,3 +265,47 @@ locations.forEach(location => {
         });
     });
 });
+
+// Add this after your personColors definition and before your locations.forEach
+const explainer = document.createElement('div');
+explainer.id = 'explainer';
+explainer.style.cssText = `
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 1;
+    background: white;
+    border-radius: 8px;
+    padding: 12px 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    max-width: 280px;
+    font-family: sans-serif;
+`;
+
+const legend = Object.entries(personColors).map(([name, color]) => `
+    <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: ${color};
+            border: 2px solid white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            flex-shrink: 0;
+        "></div>
+        <span style="font-size: 12px; color: #333;">${name}</span>
+    </div>
+`).join('');
+
+explainer.innerHTML = `
+    <h1 style="margin: 0 0 6px; font-size: 15px; font-weight: 700; color: #111;">
+        Ryan's Genealogy Map
+    </h1>
+    <p style="margin: 0 0 10px; font-size: 12px; color: #555; line-height: 1.5;">
+        Click a marker to see record details. Hover to highlight all locations for that person.
+    </p>
+    <div style="display: flex; flex-direction: column; gap: 5px;">
+        ${legend}
+    </div>
+`;
+
+document.getElementById('map').appendChild(explainer);

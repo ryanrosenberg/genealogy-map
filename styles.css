@@ -1,6 +1,117 @@
-.custom-marker {
-  position: relative;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
+/* Claude prompt: Add CSS styling to evoke a 1920s look, with a light blue accent color */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=IM+Fell+English&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#map {
+    width: 100%;
+    height: 100vh;
+}
+
+#explainer {
+    background: #fdf6e3 !important;
+    border: 1px solid #b8a98a !important;
+    border-radius: 4px !important;
+    box-shadow: 3px 3px 0px #b8a98a, 6px 6px 0px rgba(184,169,138,0.3) !important;
+    padding: 16px 18px !important;
+}
+
+#explainer h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #2c1f0e;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #b8a98a;
+    padding-bottom: 8px;
+    margin-bottom: 8px !important;
+}
+
+#explainer p {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-size: 12px;
+    color: #5a4a32;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+#explainer span {
+    font-family: 'IM Fell English', Georgia, serif;
+    color: #2c1f0e;
+}
+
+/* Mapbox popup styling */
+.mapboxgl-popup-content {
+    background: #fdf6e3;
+    border: 1px solid #b8a98a;
+    border-radius: 4px;
+    box-shadow: 3px 3px 0px #b8a98a;
+    padding: 14px 16px;
+    font-family: 'IM Fell English', Georgia, serif;
+}
+
+.mapboxgl-popup-tip {
+    border-top-color: #b8a98a !important;
+    border-bottom-color: #b8a98a !important;
+}
+
+.mapboxgl-popup-content strong {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+}
+
+.mapboxgl-popup-content span {
+    font-family: 'IM Fell English', Georgia, serif;
+    color: #5a4a32;
+}
+
+.mapboxgl-popup-content a {
+    color: #5b93b0 !important;
+    font-family: 'IM Fell English', Georgia, serif;
+    font-style: italic;
+    text-decoration: none;
+    border-bottom: 1px solid #5b93b0;
+}
+
+.mapboxgl-popup-content a:hover {
+    color: #3a7a9c !important;
+    border-bottom-color: #3a7a9c;
+}
+
+.mapboxgl-popup-close-button {
+    font-family: Georgia, serif;
+    color: #5a4a32;
+    font-size: 18px;
+}
+
+/* Mapbox control buttons */
+.mapboxgl-ctrl button {
+    background-color: #fdf6e3 !important;
+    border: 1px solid #b8a98a !important;
+}
+
+.mapboxgl-ctrl button span {
+    filter: sepia(1) hue-rotate(180deg) brightness(0.6);
+}
+
+.mapboxgl-ctrl-group {
+    border-radius: 4px !important;
+    box-shadow: 3px 3px 0px #b8a98a !important;
+}
+
+/* Decorative rule for the explainer title */
+#explainer h1::before {
+    content: '— ';
+    color: #5b93b0;
+}
+
+#explainer h1::after {
+    content: ' —';
+    color: #5b93b0;
 }
