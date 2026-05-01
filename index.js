@@ -7,194 +7,6 @@ const map = new mapboxgl.Map({
     style: 'mapbox://styles/rbr296/cmo0luuhd005b01pcbzvoefsi'
 });
 
-const locations = [
-    {
-        "person": "Burt Rosenberg",
-        "relation": "grandfather",
-        "record_type": "Census",
-        "year": 1950,
-        "address": "519 Chester Street, Brooklyn",
-        "raw": "40.65896596665618, -73.9086845739209",
-        "lat": 40.659,
-        "long": -73.9087
-    },
-    {
-        "person": "Burt Rosenberg",
-        "relation": "grandfather",
-        "record_type": "Census",
-        "year": 1940,
-        "address": "519 Chester Street, Brooklyn",
-        "raw": "40.65896596665618, -73.9086845739210",
-        "lat": 40.659,
-        "long": -73.9087
-    },
-    {
-        "person": "Sarah Schildkraut",
-        "relation": "great-grandmother",
-        "record_type": "Census",
-        "year": 1950,
-        "address": "519 Chester Street, Brooklyn",
-        "raw": "40.65896596665618, -73.9086845739211",
-        "lat": 40.659,
-        "long": -73.9087
-    },
-    {
-        "person": "Sarah Schildkraut",
-        "relation": "great-grandmother",
-        "record_type": "Census",
-        "year": 1940,
-        "address": "519 Chester Street, Brooklyn",
-        "raw": "40.65896596665618, -73.9086845739212",
-        "lat": 40.659,
-        "long": -73.9087
-    },
-    {
-        "person": "Sarah Schildkraut",
-        "relation": "great-grandmother",
-        "record_type": "Census",
-        "year": 1930,
-        "address": "585 Quincy Street, Brooklyn",
-        "raw": "40.688948811950326, -73.93589100275597",
-        "lat": 40.6889,
-        "long": -73.9359
-    },
-    {
-        "person": "Sarah Schildkraut",
-        "relation": "great-grandmother",
-        "record_type": "Marriage",
-        "year": 1929,
-        "address": "473 Hancock Street, Brooklyn",
-        "raw": "40.68435965954519, -73.93674354693663",
-        "lat": 40.6844,
-        "long": -73.9367,
-        "link": "https://a860-historicalvitalrecords.nyc.gov/view/9546635"
-    },
-    {
-        "person": "Sarah Schildkraut",
-        "relation": "great-grandmother",
-        "record_type": "State Census",
-        "year": 1915,
-        "address": "875 DeKalb Ave, Brooklyn",
-        "raw": "40.692819897640355, -73.94157103159193",
-        "lat": 40.6928,
-        "long": -73.9416
-    },
-    {
-        "person": "Sarah Schildkraut",
-        "relation": "great-grandmother",
-        "record_type": "Census",
-        "year": 1910,
-        "address": "182 M.L.K. Jr Place, Brooklyn",
-        "raw": "40.69674935763328, -73.94719934508346",
-        "lat": 40.6967,
-        "long": -73.9472
-    },
-    {
-        "person": "Sarah Schildkraut",
-        "relation": "great-grandmother",
-        "record_type": "Birth",
-        "year": 1906,
-        "address": "96 Lewis Street, Manhattan",
-        "raw": "40.71578279174288, -73.97900171678303",
-        "lat": 40.7158,
-        "long": -73.979
-    },
-    {
-        "person": "Louis Rosenberg",
-        "relation": "great-grandfather",
-        "record_type": "Census",
-        "year": 1930,
-        "address": "585 Quincy Street, Brooklyn",
-        "raw": "40.688948811950326, -73.93589100275597",
-        "lat": 40.6889,
-        "long": -73.9359
-    },
-    {
-        "person": "Louis Rosenberg",
-        "relation": "great-grandfather",
-        "record_type": "Marriage",
-        "year": 1929,
-        "address": "585 Quincy Street, Brooklyn",
-        "raw": "40.688948811950326, -73.93589100275597",
-        "lat": 40.6889,
-        "long": -73.9359,
-        "link": "https://a860-historicalvitalrecords.nyc.gov/view/9546635"
-    },
-    {
-        "person": "Louis Rosenberg",
-        "relation": "great-grandfather",
-        "record_type": "State Census",
-        "year": 1925,
-        "address": "469 Marcy Ave, Brooklyn",
-        "raw": "40.6996633882596, -73.9499334046084",
-        "lat": 40.6997,
-        "long": -73.9499
-    },
-    {
-        "person": "Louis Rosenberg",
-        "relation": "great-grandfather",
-        "record_type": "Census",
-        "year": 1920,
-        "address": "204 Ellery Street, Brooklyn",
-        "raw": "40.69884064585927, -73.94468279325417",
-        "lat": 40.6988,
-        "long": -73.9447
-    },
-    {
-        "person": "Louis Rosenberg",
-        "relation": "great-grandfather",
-        "record_type": "State Census",
-        "year": 1915,
-        "address": "211 Stockton Street, Brooklyn",
-        "raw": "40.6965919893498, -73.9465168315918",
-        "lat": 40.6966,
-        "long": -73.9465
-    },
-    {
-        "person": "Louis Rosenberg",
-        "relation": "great-grandfather",
-        "record_type": "Census",
-        "year": 1910,
-        "address": "867 DeKalb Ave, Brooklyn",
-        "raw": "40.69283179787215, -73.94177250859865",
-        "lat": 40.6928,
-        "long": -73.9418
-    },
-    {
-        "person": "Louis Rosenberg",
-        "relation": "great-grandfather",
-        "record_type": "Birth",
-        "year": 1908,
-        "address": "226 Ellery Street, Brooklyn",
-        "raw": "40.6991868558063, -73.94416757577227",
-        "lat": 40.6992,
-        "long": -73.9442,
-        "link": "https://a860-historicalvitalrecords.nyc.gov/view/2009641"
-    },
-    {
-        "person": "William Rosenberg",
-        "relation": "great-great-grandfather",
-        "record_type": "Marriage",
-        "year": 1907,
-        "address": "1066 Myrtle Ave, Brooklyn",
-        "raw": "40.69670923848107, -73.93825244047494",
-        "lat": 40.6967,
-        "long": -73.9383,
-        "link": "https://a860-historicalvitalrecords.nyc.gov/view/8151634"
-    },
-    {
-        "person": "Eva Warshauer",
-        "relation": "great-great-grandmother",
-        "record_type": "Marriage",
-        "year": 1907,
-        "address": "1066 Myrtle Ave, Brooklyn",
-        "raw": "40.69670923848107, -73.93825244047494",
-        "lat": 40.6967,
-        "long": -73.9383,
-        "link": "https://a860-historicalvitalrecords.nyc.gov/view/8151634"
-    }
-];
-
 // prompted Claude to add the popup and to do the hover effect and tweaked from there
 const personColors = {
     "Burt Rosenberg (grandfather)":    "#cf876d",
@@ -204,69 +16,130 @@ const personColors = {
     "Eva Warshauer (great-great-grandmother)":     "#8f7c4a"
 };
 
-const markersByPerson = {};
+// SVG icons for each record type (rendered white, sized to fit inside the marker)
+const recordTypeIcons = {
+    "Birth": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Star: birth/arrival -->
+        <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+    </svg>`,
+    "Marriage": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="11" height="11" fill="white" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Heart: marriage -->
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+    </svg>`,
+    "Death": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="11" height="11" fill="white" stroke="none">
+        <!-- Star of David: two overlapping triangles -->
+        <polygon points="12,2 22,19 2,19"/>
+        <polygon points="12,22 2,5 22,5"/>
+    </svg>`,
+    "Census": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Document/list: census -->
+        <rect x="5" y="2" width="14" height="20" rx="2"/>
+        <line x1="9" y1="7" x2="15" y2="7"/>
+        <line x1="9" y1="11" x2="15" y2="11"/>
+        <line x1="9" y1="15" x2="13" y2="15"/>
+    </svg>`,
+    "State Census": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Document/list: census -->
+        <rect x="5" y="2" width="14" height="20" rx="2"/>
+        <line x1="9" y1="7" x2="15" y2="7"/>
+        <line x1="9" y1="11" x2="15" y2="11"/>
+        <line x1="9" y1="15" x2="13" y2="15"/>
+    </svg>`,
+};
 
-locations.forEach(location => {
-    const color = personColors[`${location.person} (${location.relation})`] || "#888888";
+const recordTypeIconLabels = {
+    "Birth":        "★ Birth",
+    "Marriage":     "♥ Marriage",
+    "Death":        "✝ Death",
+    "Census":       "≡ Census or State Census",
+    "State Census": "≡ Census or State Census",
+};
 
-    // Outer wrapper — Mapbox controls transform on this, don't touch it
-    const markerEl = document.createElement('div');
-    markerEl.style.cssText = `width: 14px; height: 14px; cursor: pointer;`;
+// Document links keyed by "person|record_type|year" since the GeoJSON doesn't carry them
+const documentLinks = {
+    "Sarah Schildkraut|Marriage|1929": "https://a860-historicalvitalrecords.nyc.gov/view/9546635",
+    "Louis Rosenberg|Marriage|1929":   "https://a860-historicalvitalrecords.nyc.gov/view/9546635",
+    "Louis Rosenberg|Birth|1908":      "https://a860-historicalvitalrecords.nyc.gov/view/2009641",
+    "William Rosenberg|Marriage|1907": "https://a860-historicalvitalrecords.nyc.gov/view/8151634",
+    "Eva Warshauer|Marriage|1907":     "https://a860-historicalvitalrecords.nyc.gov/view/8151634"
+};
 
-    // Inner dot — we animate this instead
-    const dot = document.createElement('div');
-    dot.style.cssText = `
-        width: 20px;
-        height: 20px;
-        border-radius: 30%;
-        background-color: ${color};
-        border: 2px solid white;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.4);
-        transition: transform 0.15s ease, opacity 0.15s ease;
-    `;
-    markerEl.appendChild(dot);
+function initMarkers(geojson) {
+    const markersByPerson = {};
 
-    if (!markersByPerson[location.person]) {
-        markersByPerson[location.person] = [];
-    }
-    markersByPerson[location.person].push(dot); // store the dot, not the wrapper
+    geojson.features.forEach(feature => {
+        const { person, relation, record_type, year, address } = feature.properties;
+        const [lng, lat] = feature.geometry.coordinates;
 
-    const popupHTML = `
-        <div style="font-family: sans-serif; font-size: 13px; line-height: 1.5; max-width: 220px;">
-            <strong style="font-size: 14px; color: ${color};">${location.person}</strong><br>
-            <span style="color: #555;">${location.record_type}</span> &middot; ${location.year}<br>
-            <span>${location.address}</span>
-            ${location.link ? `<br><a href="${location.link}" target="_blank" style="color: #0070f3;">View document &rarr;</a>` : ''}
-        </div>
-    `;
+        const linkKey = `${person}|${record_type}|${year}`;
+        const link = documentLinks[linkKey] || null;
 
-    const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(popupHTML);
+        const color = personColors[`${person} (${relation})`] || "#888888";
 
-    new mapboxgl.Marker({ element: markerEl })
-        .setLngLat([location.long, location.lat])
-        .setPopup(popup)
-        .addTo(map);
+        // Outer wrapper — Mapbox controls transform on this, don't touch it
+        const markerEl = document.createElement('div');
+        markerEl.style.cssText = `width: 14px; height: 14px; cursor: pointer;`;
 
-    markerEl.addEventListener('mouseenter', () => {
-        Object.values(markersByPerson).flat().forEach(d => {
-            d.style.opacity = '0.2';
-            d.style.transform = 'scale(1)';
+        // Inner dot — we animate this instead
+        const dot = document.createElement('div');
+        dot.style.cssText = `
+            width: 22px;
+            height: 22px;
+            border-radius: 30%;
+            background-color: ${color};
+            border: 2px solid white;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+            transition: transform 0.15s ease, opacity 0.15s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        `;
+        const icon = recordTypeIcons[record_type] || recordTypeIcons["Census"];
+        dot.innerHTML = icon;
+        markerEl.appendChild(dot);
+
+        if (!markersByPerson[person]) {
+            markersByPerson[person] = [];
+        }
+        markersByPerson[person].push(dot); // store the dot, not the wrapper
+
+        const popupHTML = `
+            <div style="font-family: sans-serif; font-size: 13px; line-height: 1.5; max-width: 220px;">
+                <strong style="font-size: 14px; color: ${color};">${person}</strong><br>
+                <span style="color: #555;">${record_type}</span> &middot; ${year}<br>
+                <span>${address}</span>
+                ${link ? `<br><a href="${link}" target="_blank" style="color: #0070f3;">View document &rarr;</a>` : ''}
+            </div>
+        `;
+
+        const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(popupHTML);
+
+        new mapboxgl.Marker({ element: markerEl })
+            .setLngLat([lng, lat])
+            .setPopup(popup)
+            .addTo(map);
+
+        markerEl.addEventListener('mouseenter', () => {
+            Object.values(markersByPerson).flat().forEach(d => {
+                d.style.opacity = '0.2';
+                d.style.transform = 'scale(1)';
+            });
+            markersByPerson[person].forEach(d => {
+                d.style.opacity = '1';
+                d.style.transform = 'scale(1.2)';
+            });
         });
-        markersByPerson[location.person].forEach(d => {
-            d.style.opacity = '1';
-            d.style.transform = 'scale(1.2)';
+
+        markerEl.addEventListener('mouseleave', () => {
+            Object.values(markersByPerson).flat().forEach(d => {
+                d.style.opacity = '1';
+                d.style.transform = 'scale(1)';
+            });
         });
     });
+}
 
-    markerEl.addEventListener('mouseleave', () => {
-        Object.values(markersByPerson).flat().forEach(d => {
-            d.style.opacity = '1';
-            d.style.transform = 'scale(1)';
-        });
-    });
-});
-
-// Add this after your personColors definition and before your locations.forEach
+// Add legend/explainer panel
 const explainer = document.createElement('div');
 explainer.id = 'explainer';
 explainer.style.cssText = `
@@ -296,16 +169,51 @@ const legend = Object.entries(personColors).map(([name, color]) => `
     </div>
 `).join('');
 
+const iconLegend = Object.entries(recordTypeIconLabels).map(([type, label]) => 
+    type == "State Census" ? '' :
+    `
+    <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="
+            width: 18px; height: 18px;
+            border-radius: 4px;
+            background: #666;
+            border: 2px solid white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+        ">${recordTypeIcons[type] || ''}</div>
+        <span style="font-size: 12px; color: #333;">${type}</span>
+    </div>
+`).join('');
+
 explainer.innerHTML = `
     <h1 style="margin: 0 0 6px; font-size: 15px; font-weight: 700; color: #111;">
         Ryan's Genealogy Map
     </h1>
+    <p style="font-size: 12px; color: #111; line-height: 1.5; font-style: normal;">
+        This map shows the history of my father's family in New York City in the first half of the 20th century -- or as much as can be gleaned from official records. Births, deaths, marriages, and censuses are all tracked for the narrow slices of Brooklyn and Manhattan where they lived.
+    </p>
     <p style="margin: 0 0 10px; font-size: 12px; color: #555; line-height: 1.5;">
         Click a marker to see record details. Hover to highlight all locations for that person.
     </p>
-    <div style="display: flex; flex-direction: column; gap: 5px;">
+    <div style="display: flex; flex-direction: column; gap: 5px; margin-bottom: 10px;">
         ${legend}
+    </div>
+    <div style="border-top: 1px solid #eee; padding-top: 8px; margin-top: 2px;">
+        <p style="margin: 0 0 6px; font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.05em;">Record type</p>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+            ${iconLegend}
+        </div>
     </div>
 `;
 
 document.getElementById('map').appendChild(explainer);
+
+// Load GeoJSON and initialize markers
+fetch('output.geojson')
+    .then(res => {
+        if (!res.ok) throw new Error(`Failed to load output.geojson: ${res.status}`);
+        return res.json();
+    })
+    .then(geojson => initMarkers(geojson))
+    .catch(err => console.error(err));
