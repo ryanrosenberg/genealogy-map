@@ -9,6 +9,5 @@ simple map displaying the locations that my grandfather's family lived in New Yo
 - add my grandmother's side
 
 #### map
-- add icons representing life events
 - color scheme to indicate side of family
 - add a life path on hover?
