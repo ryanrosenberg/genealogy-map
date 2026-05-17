@@ -64,9 +64,10 @@ const documentLinks = {
     "Eva Warshauer|Marriage|1907":     "https://a860-historicalvitalrecords.nyc.gov/view/8151634"
 };
 
-function initMarkers(geojson) {
-    const markersByPerson = {};
+// Moved to outer scope so the legend hover listeners can access it
+const markersByPerson = {};
 
+function initMarkers(geojson) {
     geojson.features.forEach(feature => {
         const { person, relation, record_type, year, address } = feature.properties;
         const [lng, lat] = feature.geometry.coordinates;
@@ -101,7 +102,7 @@ function initMarkers(geojson) {
         if (!markersByPerson[person]) {
             markersByPerson[person] = [];
         }
-        markersByPerson[person].push(dot); // store the dot, not the wrapper
+        markersByPerson[person].push(dot);
 
         const popupHTML = `
             <div style="font-family: sans-serif; font-size: 13px; line-height: 1.5; max-width: 220px;">
@@ -120,22 +121,31 @@ function initMarkers(geojson) {
             .addTo(map);
 
         markerEl.addEventListener('mouseenter', () => {
-            Object.values(markersByPerson).flat().forEach(d => {
-                d.style.opacity = '0.2';
-                d.style.transform = 'scale(1)';
-            });
-            markersByPerson[person].forEach(d => {
-                d.style.opacity = '1';
-                d.style.transform = 'scale(1.2)';
-            });
+            highlightPerson(person);
         });
 
         markerEl.addEventListener('mouseleave', () => {
-            Object.values(markersByPerson).flat().forEach(d => {
-                d.style.opacity = '1';
-                d.style.transform = 'scale(1)';
-            });
+            resetHighlight();
         });
+    });
+}
+
+// Shared highlight/reset helpers used by both markers and legend rows
+function highlightPerson(person) {
+    Object.values(markersByPerson).flat().forEach(d => {
+        d.style.opacity = '0.2';
+        d.style.transform = 'scale(1)';
+    });
+    markersByPerson[person].forEach(d => {
+        d.style.opacity = '1';
+        d.style.transform = 'scale(1.2)';
+    });
+}
+
+function resetHighlight() {
+    Object.values(markersByPerson).flat().forEach(d => {
+        d.style.opacity = '1';
+        d.style.transform = 'scale(1)';
     });
 }
 
@@ -156,7 +166,7 @@ explainer.style.cssText = `
 `;
 
 const legend = Object.entries(personColors).map(([name, color]) => `
-    <div style="display: flex; align-items: center; gap: 8px;">
+    <div class="legend-row" data-person="${name}" style="display: flex; align-items: center; gap: 8px; cursor: default;">
         <div style="
             width: 12px; height: 12px;
             border-radius: 50%;
@@ -194,7 +204,7 @@ explainer.innerHTML = `
         This map shows the history of my father's family in New York City in the first half of the 20th century -- or as much as can be gleaned from official records. Births, deaths, marriages, and censuses are all tracked for the narrow slices of Brooklyn and Manhattan where they lived.
     </p>
     <p style="margin: 0 0 10px; font-size: 12px; color: #555; line-height: 1.5;">
-        Click a marker to see record details. Hover to highlight all locations for that person.
+        Click a marker to see record details. Hover over a marker or a legend entry to highlight all locations for that person.
     </p>
     <div style="display: flex; flex-direction: column; gap: 5px; margin-bottom: 10px;">
         ${legend}
@@ -208,6 +218,24 @@ explainer.innerHTML = `
 `;
 
 document.getElementById('map').appendChild(explainer);
+
+// Wire up legend row hover listeners.
+// personColors keys are "Firstname Lastname (relation)" — strip the parenthetical
+// to get the bare name that markersByPerson is keyed on.
+explainer.querySelectorAll('.legend-row').forEach(row => {
+    const fullLabel = row.dataset.person;           // e.g. "Louis Rosenberg (great-grandfather)"
+    const person = fullLabel.replace(/\s*\(.*\)$/, ''); // → "Louis Rosenberg"
+
+    row.addEventListener('mouseenter', () => {
+        // markersByPerson may not be populated yet if GeoJSON hasn't loaded;
+        // guard so hovering before load doesn't throw.
+        if (markersByPerson[person]) highlightPerson(person);
+    });
+
+    row.addEventListener('mouseleave', () => {
+        resetHighlight();
+    });
+});
 
 // Load GeoJSON and initialize markers
 fetch('output.geojson')
